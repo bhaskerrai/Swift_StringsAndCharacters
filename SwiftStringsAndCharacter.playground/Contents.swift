@@ -105,3 +105,60 @@ text1.append(ch)
 print(text1)
 
 //“You can’t append a String or Character to an existing Character variable, because a Character value must contain a single character only.”
+
+
+
+//“If you’re using multiline string literals to build up the lines of a longer string, you want every line in the string to end with a line break, including the last line. For example:
+var a = """
+jaldi
+aaja
+"""
+var b = """
+bsdk
+"""
+print(a+b)
+
+print("\n")
+var a2 = """
+jaldi
+aaja
+
+"""
+var b2 = """
+bsdk
+
+"""
+print(a2+b2)
+
+//Sting Interpolation means to insert a constant, varaiable, string literal etc into a string using \()
+
+print("Kab aaega \(b)?")
+
+var n = 2
+print("\(n) times 5 is: \((n)*5)")
+
+print("\(n) times 5.4 is: \(Double(n)*5.4)")
+
+// “You can use extended string delimiters to create strings containing characters that would otherwise be treated as a string interpolation. For example:
+
+print(#"Write an interpolated string in Swift using \(multiplier)."#)
+// Prints "Write an interpolated string in Swift using \(multiplier)."
+
+
+// To use string interpolation inside a string that uses extended delimiters, match the number of number signs after the backslash to the number of number signs at the beginning and end of the string. For example:
+
+print(#"6 times 7 is \#(6 * 7)."#)
+// Prints "6 times 7 is 42."
+ 
+//“Behind the scenes, Swift’s native String type is built from Unicode scalar values. A Unicode scalar value is a unique 21-bit number for a character or modifier, such as U+0061 for LATIN SMALL LETTER A ("a"), or U+1F425 for FRONT-FACING BABY CHICK ("🐥").”
+
+//Extended Grapheme Clusters
+let eAcute: Character = "\u{E9}"                         // é
+let combinedEAcute: Character = "\u{65}\u{301}"          // e followed by
+// eAcute is é, combinedEAcute is é”
+print(eAcute,combinedEAcute)
+
+//“Counting Characters
+//To retrieve a count of the Character values in a string, use the count property of the string:”
+let sn = "🥲💔"
+print(sn.count) //To get the length of a String in Swift, use count property of the string.
