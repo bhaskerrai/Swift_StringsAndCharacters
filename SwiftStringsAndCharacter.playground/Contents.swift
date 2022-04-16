@@ -162,3 +162,56 @@ print(eAcute,combinedEAcute)
 //To retrieve a count of the Character values in a string, use the count property of the string:”
 let sn = "🥲💔"
 print(sn.count) //To get the length of a String in Swift, use count property of the string.
+
+//String Slices
+let name = "Bhasker Rai"
+print(name[name.startIndex])
+//print(name[name.endIndex]) //this gives error because it is trying print sth out of the range of the string.
+ 
+//to access the last index we use write:
+print(name[name.index(before: name.endIndex)])
+
+print(name[name.index(after: name.startIndex)])
+//print(name[3]) //“Swift strings can’t be indexed by integer values.”
+
+var idx = name.index(name.startIndex, offsetBy: 5) //gives 5th char after the startIndex
+print(name[idx])
+
+//name.index(after: greeting.endIndex) // Error because out of the range of the string
+
+//“Use the indices property to access all of the indices of individual characters in a string.”
+
+for i in name{         //noraml way
+    print(i, terminator: "")
+}
+
+print("\nOR")
+
+//for i in name.indices{      //using indices property
+//    print(name[i], terminator: "")
+//}
+
+//“NOTE
+//You can use the startIndex and endIndex properties and the index(before:), index(after:), and index(_:offsetBy:) methods on any type that conforms to the Collection protocol. This includes String, as shown here, as well as collection types such as Array, Dictionary, and Set.”
+
+//“Inserting and Removing
+//To insert a single character into a string at a specified index, use the insert(_:at:) method, and to insert the contents of another string at a specified index, use the insert(contentsOf:at:) method.
+
+var str = "It's going well"
+str.insert("!", at: str.endIndex) //to inset character into a string.
+print(str)
+
+var abe = "It's going well"
+abe.insert(contentsOf: " over here.", at: abe.endIndex) //to inset content into a string.
+print(abe)
+
+//“To remove a single character from a string at a specified index, use the remove(at:) method, and to remove a substring at a specified range, use the removeSubrange(_:) method:”
+
+abe.remove(at: abe.index(before: abe.endIndex)) //this will remove the full-stop.
+print(abe)
+
+let range = abe.index(abe.endIndex, offsetBy: -9)..<abe.endIndex
+
+abe.removeSubrange(range)
+print(abe)
+
