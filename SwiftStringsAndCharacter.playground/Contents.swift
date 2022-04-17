@@ -163,7 +163,7 @@ print(eAcute,combinedEAcute)
 let sn = "🥲💔"
 print(sn.count) //To get the length of a String in Swift, use count property of the string.
 
-//String Slices
+//String Indexing
 let name = "Bhasker Rai"
 print(name[name.startIndex])
 //print(name[name.endIndex]) //this gives error because it is trying print sth out of the range of the string.
@@ -215,3 +215,96 @@ let range = abe.index(abe.endIndex, offsetBy: -9)..<abe.endIndex
 abe.removeSubrange(range)
 print(abe)
 
+//“Substrings
+//When you get a substring from a string—for example, using a subscript or a method like prefix(_:)—the result is an instance of Substring, not another string. Substrings in Swift have most of the same methods as strings, which means you can work with substrings the same way you work with strings. However, unlike strings, you use substrings for only a short amount of time while performing actions on a string. When you’re ready to store the result for a longer time, you convert the substring to an instance of String. For example:”
+
+//let greeting = "Hello, world!"
+//let index = greeting.firstIndex(of: ",") ?? greeting.endIndex
+//let beginning = greeting[..<index]
+//// beginning is "Hello"
+//
+//// Convert the result to a String for long-term storage.
+//let newString = String(beginning)
+
+var h = "look! There is a...!"
+let i = h.firstIndex(of: "!") ?? h.endIndex
+//print(i)
+let nh = h[..<i]
+
+// Convert the result to a String for long-term storage.
+let nStr = String(nh)
+print(nStr)
+
+//Comparing Strings
+//Swift provides three ways to compare textual values: string and character equality, prefix equality, and suffix equality.
+
+//String and Character Equality
+//String and character equality is checked with the “equal to” operator (==) and the “not equal to” operator (!=), as described in Comparison Operators:”
+
+a = "Fucked up!"
+b = "Fucked up!"
+
+if (a == b){
+    print("equal")
+}
+
+//“Prefix and Suffix Equality
+//To check whether a string has a particular string prefix or suffix, call the string’s hasPrefix(_:) and hasSuffix(_:) methods, both of which take a single argument of type String and return a Boolean value.”
+
+let fooditems = ["Chicken Biryani","Mutton Biryani","Mutton Karhahi","Chicken Karhahi","Daal Mash","Chicken Handi"]
+
+var chickenItem = 0
+var muttonItem = 0
+var karhahiItem = 0
+
+
+
+for item in fooditems{
+    if item.hasPrefix("Chicken"){
+        chickenItem += 1
+}
+    if item.hasPrefix("Mutton"){
+        muttonItem += 1
+}
+    if item.hasSuffix("Karhahi"){
+        karhahiItem += 1
+}
+}
+
+print("There are total \(chickenItem) items of Chicken.\nThere are total \(muttonItem) items of Mutton.\nThere are total \(karhahiItem) types of Karhahi.")
+
+
+
+//“Unicode Representations of Strings
+//When a Unicode string is written to a text file or some other storage, the Unicode scalars in that string are encoded in one of several Unicode-defined encoding forms. Each form encodes the string in small chunks known as code units. These include the UTF-8 encoding form (which encodes a string as 8-bit code units), the UTF-16 encoding form (which encodes a string as 16-bit code units), and the UTF-32 encoding form (which encodes a string as 32-bit code units).
+
+//Swift provides several different ways to access Unicode representations of strings. You can iterate over the string with a for-in statement, to access its individual Character values as Unicode extended grapheme clusters. This process is described in Working with Characters.
+
+//Alternatively, access a String value in one of three other Unicode-compliant representations:
+
+//A collection of UTF-8 code units (accessed with the string’s utf8 property)
+
+//A collection of UTF-16 code units (accessed with the string’s utf16 property)
+
+//A collection of 21-bit Unicode scalar values, equivalent to the string’s UTF-32 encoding form (accessed with the string’s unicodeScalars property)”
+
+//UTF-8 Representation
+let dogString = "Dog‼🐶"
+for codeUnit in dogString.utf8 {
+    print("\(codeUnit) ", terminator: "")
+}
+//“In the example above, the first three decimal codeUnit values (68, 111, 103) represent the characters D, o, and g, whose UTF-8 representation is the same as their ASCII representation. The next three decimal codeUnit values (226, 128, 188) are a three-byte UTF-8 representation of the DOUBLE EXCLAMATION MARK character. The last four codeUnit values (240, 159, 144, 182) are a four-byte UTF-8 representation of the DOG FACE character.
+
+print("\n")
+
+//UTF-16 Representation
+let heartbroken = "💔🥲heartbroken"
+for codeUnit in heartbroken.utf16 {
+    print("\(codeUnit) ", terminator: "")
+}
+
+print("\n")
+//Unicode Scalar Representation
+for scalar in dogString.unicodeScalars {
+    print("\(scalar.value) ", terminator: "")
+}
