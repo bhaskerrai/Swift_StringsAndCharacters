@@ -14,6 +14,9 @@ this is third
 
 print(paragaph)
 
+
+//“ If you want to use line breaks to make your source code easier to read, but you don’t want the line breaks to be part of the string’s value, write a backslash (\) at the end of those lines:”
+
 let multilineString = """
 “The White Rabbit put on his spectacles.  "Where shall I begin, \
 please your Majesty?" he asked.
@@ -55,7 +58,7 @@ print(newPara)
 var hij = #"Line 1\nLine 2"#
 print(hij)
 
-//“If you need the special effects of a character in a string literal, match the number of number signs within the string following the escape character (\). For example,”
+//If you need the special effects of a character in a string literal, match the number of number signs within the string following the escape character (\). For example,
 
 var effectEnable = #"First line \#nSecond line \#nThird line."#
 print(effectEnable)
@@ -204,6 +207,15 @@ print(str)
 var abe = "It's going well"
 abe.insert(contentsOf: " over here.", at: abe.endIndex) //to inset content into a string.
 print(abe)
+
+var s = "Hello mates"
+
+s.insert("#", at: s.index(s.startIndex, offsetBy: 2))
+print(s)
+
+s.insert(contentsOf: "😊☺️", at: s.index(s.startIndex, offsetBy: 2))
+print(s)
+
 
 //“To remove a single character from a string at a specified index, use the remove(at:) method, and to remove a substring at a specified range, use the removeSubrange(_:) method:”
 
